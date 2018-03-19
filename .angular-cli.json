@@ -19,7 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.sass"
+        "assets/sass/materialize.scss",
+        "assets/css/fontawesome-all.css",
+        "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -54,7 +56,27 @@
     }
   },
   "defaults": {
-    "styleExt": "sass",
-    "component": {}
+    "styleExt": "scss",
+    "class": {
+      "spec": false
+    },
+    "component": {
+      "spec": false
+    },
+    "directive": {
+      "spec": false
+    },
+    "guard": {
+      "spec": false
+    },
+    "module": {
+      "spec": false
+    },
+    "pipe": {
+      "spec": false
+    },
+    "service": {
+      "spec": false
+    }
   }
 }

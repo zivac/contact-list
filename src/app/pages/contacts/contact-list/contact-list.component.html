@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="collection">
+    <a class="collection-item avatar" *ngFor="let contact of _contacts.contacts" [routerLink]="'/view/'+contact.id">
+      <img [src]="contact.profilePhoto" class="circle">
+      <span class="title">{{contact.firstName}} {{contact.lastName}}</span>
+      <p class="subtitle">{{contact.email}}</p>
+      <span class="secondary-content">
+        <i class="far fa-heart"></i>
+        <i class="far fa-edit"></i>
+        <i class="far fa-trash-alt"></i>
+      </span>
+    </a>
+  </div>
+</div>
