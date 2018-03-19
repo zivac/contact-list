@@ -16,4 +16,8 @@ export class ApiService {
     return this._http.post(url, body);
   }
 
+  delete(url: string) {
+    return this._http.delete(url);
+  }
+
 }

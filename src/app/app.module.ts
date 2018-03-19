@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MockHttpClient } from './services/mock-http.service';
 import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { StorageService } from './services/storage.service';
 
 
 @NgModule({
@@ -19,7 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ApiService, MockHttpClient],
+  providers: [
+    ApiService, 
+    MockHttpClient, 
+    StorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

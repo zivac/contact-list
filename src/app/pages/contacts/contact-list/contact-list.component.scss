@@ -1,12 +1,65 @@
-nav {
-    background: rgba(242,242,242,0.9);
-    box-shadow: none;
-    color: #333;
+.navbar-fixed {
+    nav {
+        box-shadow: none;
+        
+        ul {
+            li {
+                position: relative;
 
-    a {
-        color: #333;
+                a {
+                    transition: color .3s;
+                    color: rgba(255, 255, 255, 0.5);
+                    &:hover {
+                        background: none;
+                    }
+                }
+                &.active, &:hover {
+                    background: none;
+                    a {
+                        color: white;
+                    }
+                }
+                &.active {
+                    .triangle {
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 10px 10px 0 10px;
+                        border-color: #2da1ad transparent transparent transparent;
+                        position: absolute;
+                        left: calc(50% - 10px);
+                    }
+                }
+                
+            }
+        }
+        
+        .nav-wrapper {
+            background: #2da1ad;
+
+            .search {
+
+                padding: 0 15px;
+                display: inline-block;
+                width: 50%;
+
+                input {
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+                    &:focus {
+                        border-bottom: 1px solid white;
+                    }
+                }
+
+                ::placeholder {
+                    color: rgba(255, 255, 255, 0.5);
+                }
+            }
+        }
+        
     }
 }
+
 h5 {
     padding-left: 10px;
     text-transform: uppercase;

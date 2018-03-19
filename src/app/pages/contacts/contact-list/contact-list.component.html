@@ -2,14 +2,24 @@
   <nav>
     <div class="nav-wrapper">
       <div class="container">
-          <div class="input-field">
-            <input placeholder="Search" type="text" [(ngModel)]="searchText" (ngModelChange)="groupContacts()">
-          </div>
+        <ul>
+          <li [ngClass]="{active: !showFavourites}">
+            <a (click)="toggleFavourites(false)">Contacts</a>
+            <span class="triangle"></span>
+          </li>
+          <li [ngClass]="{active: showFavourites}">
+            <a (click)="toggleFavourites(true)">Favourites</a>
+            <span class="triangle"></span>
+          </li>
+        </ul>
+        <div class="search">
+          <input placeholder="Search" type="text" class="validate" [(ngModel)]="searchText" (ngModelChange)="groupContacts()">
+        </div>
       </div>
     </div>
   </nav>
 </div>
-<div class="container">
+<div class="content container">
   <div *ngFor="let group of alphabetGroups">
     <h5 [id]="group">{{group}}</h5>
     <div class="collection">
@@ -17,7 +27,7 @@
         <img [src]="contact.profilePhoto" class="circle">
         <span class="title"><span class="name">{{contact.firstName}}</span> <span class="name">{{contact.lastName}}</span></span>
         <p class="subtitle">{{contact.email}}</p>
-        <span class="secondary-content">
+        <span class="secondary-content hide-on-med-and-down">
           <i class="fa-heart" [ngClass]="{fas: contact.favourite, far: !contact.favourite}" (click)="favouriteContact($event, contact)"></i>
           <i class="far fa-edit"></i>
           <i class="far fa-trash-alt"></i>
