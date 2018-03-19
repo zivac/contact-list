@@ -1,14 +1,28 @@
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <div class="container">
+          <div class="input-field">
+            <input placeholder="Search" type="text" [(ngModel)]="searchText" (ngModelChange)="groupContacts()">
+          </div>
+      </div>
+    </div>
+  </nav>
+</div>
 <div class="container">
-  <div class="collection">
-    <a class="collection-item avatar" *ngFor="let contact of _contacts.contacts" [routerLink]="'/view/'+contact.id">
-      <img [src]="contact.profilePhoto" class="circle">
-      <span class="title">{{contact.firstName}} {{contact.lastName}}</span>
-      <p class="subtitle">{{contact.email}}</p>
-      <span class="secondary-content">
-        <i class="far fa-heart"></i>
-        <i class="far fa-edit"></i>
-        <i class="far fa-trash-alt"></i>
-      </span>
-    </a>
+  <div *ngFor="let group of alphabetGroups">
+    <h5 [id]="group">{{group}}</h5>
+    <div class="collection">
+      <a class="collection-item avatar" *ngFor="let contact of contacts[group]" [routerLink]="'/view/'+contact.id">
+        <img [src]="contact.profilePhoto" class="circle">
+        <span class="title"><span class="name">{{contact.firstName}}</span> <span class="name">{{contact.lastName}}</span></span>
+        <p class="subtitle">{{contact.email}}</p>
+        <span class="secondary-content">
+          <i class="fa-heart" [ngClass]="{fas: contact.favourite, far: !contact.favourite}" (click)="favouriteContact($event, contact)"></i>
+          <i class="far fa-edit"></i>
+          <i class="far fa-trash-alt"></i>
+        </span>
+      </a>
+    </div>
   </div>
 </div>

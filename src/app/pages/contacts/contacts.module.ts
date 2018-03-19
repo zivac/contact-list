@@ -9,10 +9,12 @@ import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { ContactsService } from './contacts.service';
 import { ContactsResolver } from './contacts.resolver';
 import { ContactResolver } from './contact.resolver';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     ContactsRoutingModule
   ],
   declarations: [ContactsComponent, ContactListComponent, ContactDetailsComponent, ContactEditComponent],
