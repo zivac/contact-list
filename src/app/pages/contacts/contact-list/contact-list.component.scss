@@ -37,24 +37,37 @@
         .nav-wrapper {
             background: #2da1ad;
 
-            .search {
+            .container {
 
-                padding: 0 15px;
-                display: inline-block;
-                width: 50%;
+                display: flex;
 
-                input {
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+                 .search {
 
-                    &:focus {
+                    flex-grow: 1;
+                    padding: 0 15px;
+                    display: inline-block;
+                    width: 50%;
+
+                    input {
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+                        &:focus {
                         border-bottom: 1px solid white;
+                        }
                     }
-                }
 
-                ::placeholder {
-                    color: rgba(255, 255, 255, 0.5);
-                }
+                    ::placeholder {
+                        color: rgba(255, 255, 255, 0.5);
+                    }
+
+                 }
+
+                 .actions {
+                   display: inline-block;
+                   padding: 0 15px;
+                 }
+
             }
+
         }
         
     }
@@ -66,6 +79,8 @@ h5 {
 }
 .collection {
     .collection-item {
+
+        outline: none;
 
         &.avatar {
             padding-left: 90px;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { StorageService } from './storage.service';
+import { Contact } from '../classes/contact';
 
 @Injectable()
 export class MockHttpClient {
@@ -22,7 +23,7 @@ export class MockHttpClient {
             res => {
               this._storage.update('savedData', {seed: res['info'].seed});
               obs.next(res['results'].map((user, index) => {
-                return {
+                return new Contact({
                   id: index + 1,
                   firstName: user.name.first,
                   lastName: user.name.last,
@@ -31,17 +32,17 @@ export class MockHttpClient {
                   favourite: favourites.indexOf(index + 1) != -1,
                   phones: [
                     {
-                      name: 'Phone',
+                      name: `${user.name.first}'s phone`,
                       label: 'phone',
                       number: user.phone
                     },
                     {
-                      name: 'Cell',
+                      name: `${user.name.first}'s cell`,
                       label: 'cell',
                       number: user.cell
                     }
                   ]
-                }
+                })
               }));
               obs.complete();
             }

@@ -1,9 +1,51 @@
 <div class="container">
   <div class="contact-card card">
+    <div class="card-header">
+      <a class="back-link btn-flat" routerLink="/">&#8629; Contacts</a>
+      <a class="edit-link btn">Edit</a>
+    </div>
     <div class="card-content">
       <img class="responsive-img" [src]="contact.profilePhoto" class="circle">
-      <h3>{{contact.firstName}} {{contact.lastName}}</h3>
-      <p>{{contact.email}}</p>
+      <h3><span class="name">{{contact.firstName}}</span> <span class="name">{{contact.lastName}}</span></h3>
+      <p class="email">{{contact.email}}</p>
+      <div class="links">
+        <a class="btn-floating" href="sms:{{contact.getPhone()}}"><i class="fas fa-comment"></i></a>
+        <a class="btn-floating" href="tel:{{contact.getPhone()}}"><i class="fas fa-phone"></i></a>
+        <a class="btn-floating disabled"><i class="fas fa-video"></i></a>
+        <a class="btn-floating" href="mailto:{{contact.email}}"><i class="fas fa-envelope"></i></a>
+      </div>
+      <div class="favourite">
+        <div class="switch">
+          <label>
+            <i class="fas fa-star"></i> Favourite
+            <input type="checkbox" [(ngModel)]="contact.favourite" (change)="toggleFavourite()">
+            <span class="lever"></span>
+          </label>
+        </div>
+      </div>
+      <div class="phones">
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Label</th>
+              <th>Name</th>
+              <th>Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let phone of contact.phones">
+              <td style="text-align:center"><i *ngIf="_contacts.phoneIcons[phone.label]" class="fas {{_contacts.phoneIcons[phone.label]}}"></i></td>
+              <td>{{phone.label}}</td>
+              <td>{{phone.name}}</td>
+              <td><a href="tel:{{phone.number}}">{{phone.number}}</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="notes">
+        <textarea placeholder="Notes" class="materialize-textarea"></textarea>
+      </div>
     </div>
   </div>
 </div>
