@@ -51,6 +51,11 @@ export class ContactListComponent implements OnInit {
     this.groupContacts();
   }
 
+  //scroll to contacts with last name beginning with letter
+  scrollTo(letter: string) {
+    window.scrollTo(0, document.getElementById(letter).getBoundingClientRect().top + window.pageYOffset - 75);
+  }
+
   //change favourite property of contact
   favouriteContact(event: any, contact: Contact) {
     event.stopPropagation();

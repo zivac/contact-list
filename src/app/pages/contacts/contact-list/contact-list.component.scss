@@ -73,6 +73,26 @@
     }
 }
 
+.alphabet-links {
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+
+    a {
+        color: #aaa;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+            color: #2da1ad;
+        }
+    }
+
+}
+
 h5 {
     padding-left: 10px;
     text-transform: uppercase;
