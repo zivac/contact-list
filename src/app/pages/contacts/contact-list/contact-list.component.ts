@@ -3,6 +3,7 @@ import { ContactsService } from '../contacts.service';
 import { Contact } from '../../../classes/contact';
 import * as _ from 'lodash';
 import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-list',
@@ -26,7 +27,8 @@ export class ContactListComponent implements OnInit {
   showFavourites: boolean = false;
 
   constructor(
-    public _contacts: ContactsService
+    public _contacts: ContactsService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -64,6 +66,13 @@ export class ContactListComponent implements OnInit {
     return false;
   }
 
+  //redirect to edit page
+  editContact(event: any, contact: Contact) {
+    event.stopPropagation();
+    this._router.navigate(['/edit/'+contact.id]);
+    return false;
+  }
+
   //delete contact from contacts lsit
   deleteContact(event: any, contact: Contact) {
     event.stopPropagation();
@@ -79,7 +88,10 @@ export class ContactListComponent implements OnInit {
       buttonsStyling: false
     }).then(result => {
       if(result.value) {
-        console.log('deleted');
+        this._contacts.deleteContact(contact).subscribe(() => {
+          this._contacts.contacts.splice(this._contacts.contacts.indexOf(contact), 1);
+          this.contacts[contact['groupKey']].splice(this.contacts[contact['groupKey']].indexOf(contact), 1);
+        })
       }
     })
     return false;

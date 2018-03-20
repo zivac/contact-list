@@ -2,7 +2,7 @@ import { trigger, animate, style, group, animateChild, query, stagger, transitio
 
 //animates transition between pages (only in chrome and firefox)
 export const routerTransition = trigger('routerTransition', [
-    transition('list => details', [
+    transition('list => details, list => edit', [
     /* order */
     /* 1 */ query(':enter, :leave', style({ position: 'fixed', width: '100%' })
             , { optional: true }),
@@ -17,7 +17,7 @@ export const routerTransition = trigger('routerTransition', [
       ], { optional: true }),
         ])
     ]),
-    transition('details => list', [
+    transition('details => list, edit => list', [
     /* order */
     /* 1 */ query(':enter, :leave', style({ position: 'fixed', width: '100%' })
             , { optional: true }),

@@ -2,7 +2,7 @@
   <div class="contact-card card">
     <div class="card-header">
       <a class="back-link btn-flat" routerLink="/">&#8629; Contacts</a>
-      <a class="edit-link btn">Edit</a>
+      <a class="edit-link btn" [routerLink]="'/edit/'+contact.id">Edit</a>
     </div>
     <div class="card-content">
       <img class="responsive-img" [src]="contact.profilePhoto" class="circle">
@@ -17,7 +17,7 @@
       <div class="favourite">
         <div class="switch">
           <label>
-            <i class="fas fa-star"></i> Favourite
+            <i class="fa-heart" [ngClass]="{fas: contact.favourite, far: !contact.favourite}"></i> Favourite
             <input type="checkbox" [(ngModel)]="contact.favourite" (change)="toggleFavourite()">
             <span class="lever"></span>
           </label>

@@ -16,7 +16,7 @@
           <input placeholder="Search" type="text" class="validate" [(ngModel)]="searchText" (ngModelChange)="groupContacts()">
         </div>
         <div class="actions">
-          <a class="waves-effect waves-light btn">Add</a>
+          <a class="waves-effect waves-light btn" routerLink="/create">Add</a>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
         <p class="subtitle">{{contact.email}}</p>
         <span class="secondary-content hide-on-med-and-down">
           <i class="fa-heart" [ngClass]="{fas: contact.favourite, far: !contact.favourite}" (click)="favouriteContact($event, contact)"></i>
-          <i class="far fa-edit"></i>
+          <i class="far fa-edit" (click)="editContact($event, contact)"></i>
           <i class="far fa-trash-alt" (click)="deleteContact($event, contact)"></i>
         </span>
       </a>

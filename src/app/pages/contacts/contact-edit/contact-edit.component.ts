@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ContactsService } from '../contacts.service';
+import { Contact } from '../../../classes/contact';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-contact-edit',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactEditComponent implements OnInit {
 
-  constructor() { }
+  contact: Contact
+
+  constructor(
+    private _route: ActivatedRoute,
+    private _location: Location,
+    public _contacts: ContactsService
+  ) { }
 
   ngOnInit() {
+    this.contact = this._route.data['getValue']().contact || new Contact();
+  }
+
+  //cancel edit and go back to last page
+  cancel() {
+    this._location.back();
   }
 
 }
