@@ -42,8 +42,15 @@ export class ContactsService {
   }
 
   //deletes contact from list
-  deleteContact(contact: Contact) {
-    return this._api.delete('contacts/' + contact.id);
+  deleteContact(id: number) {
+    return new Observable(obs => {
+      this._api.delete('contacts/' + id).subscribe(res => {
+        let contact = this.contacts.find(contact => contact.id == id);
+        if(contact) this.contacts.splice(this.contacts.indexOf(contact), 1);
+        obs.next({success: true});
+        obs.complete();
+      });
+    })
   }
 
 }

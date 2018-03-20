@@ -73,7 +73,7 @@ export class ContactListComponent implements OnInit {
     return false;
   }
 
-  //delete contact from contacts lsit
+  //delete contact from contacts list
   deleteContact(event: any, contact: Contact) {
     event.stopPropagation();
     swal({
@@ -88,8 +88,7 @@ export class ContactListComponent implements OnInit {
       buttonsStyling: false
     }).then(result => {
       if(result.value) {
-        this._contacts.deleteContact(contact).subscribe(() => {
-          this._contacts.contacts.splice(this._contacts.contacts.indexOf(contact), 1);
+        this._contacts.deleteContact(contact.id).subscribe(() => {
           this.contacts[contact['groupKey']].splice(this.contacts[contact['groupKey']].indexOf(contact), 1);
         })
       }

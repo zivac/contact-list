@@ -41,6 +41,9 @@
             <div class="notes col s12">
               <textarea placeholder="Notes" class="materialize-textarea"></textarea>
             </div>
+            <div class="delete col s12" *ngIf="contact.id">
+              <button class="btn red" (click)="deleteContact()">Delete Contact</button>
+            </div>
         </form>
     </div>
   </div>
