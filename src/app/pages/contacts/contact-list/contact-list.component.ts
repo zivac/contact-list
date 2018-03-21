@@ -41,7 +41,7 @@ export class ContactListComponent implements OnInit {
       .filter(contact => this.showFavourites ? contact.favourite : true)
       .filter(contact => (contact.firstName + ' ' + contact.lastName).toLowerCase().indexOf(this.searchText.toLowerCase()) != -1)
       .map(contact => {
-        return _.extend(contact, {groupKey: contact.lastName[0].replace(/[^a-z]/, '#')})
+        return _.extend(contact, { groupKey: (contact.lastName.toLowerCase()[0] || "#").replace(/[^a-z]/, '#')})
       }), 'groupKey');
     this.alphabetGroups = _.keys(this.contacts);
   }

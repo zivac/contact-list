@@ -8,16 +8,20 @@ export class ApiService {
     private _http: MockHttpClient
   ) { }
 
+  private request(method: 'GET' | 'POST' | 'DELETE', url: string, data?: any) {
+    return this._http.request(method, url, data);
+  }
+
   get(url: string) {
-    return this._http.get(url);
+    return this.request('GET', url);
   }
 
   post(url: string, body: any) {
-    return this._http.post(url, body);
+    return this.request('POST', url, body);
   }
 
   delete(url: string) {
-    return this._http.delete(url);
+    return this.request('DELETE', url);
   }
 
 }

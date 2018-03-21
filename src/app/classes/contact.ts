@@ -1,11 +1,12 @@
 export class Contact {
 
     id: number
-    firstName: string
-    lastName: string
+    firstName: string = ""
+    lastName: string = ""
     profilePhoto: string
-    email: string
+    email: string = ""
     favourite: boolean = false
+    notes?: string = ""
 
     phones: Array<{
         name: string
