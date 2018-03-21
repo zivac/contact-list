@@ -6,13 +6,13 @@
             <button type="button" class="cancel-button btn-flat" (click)="cancel()">&#8629; Cancel</button>
             <button type="submit" class="save-button btn">Save</button>
           </div>
-          <div class="col s3">
-            <img class="avatar circle" [src]="contact.profilePhoto">
-          </div>
-          <div class="col s9">
-              <input placeholder="First Name" formControlName="firstName" type="text" class="validate">
-              <input placeholder="Last Name" formControlName="lastName" type="text" class="validate">
-              <input placeholder="Email" formControlName="email" type="email" class="validate">
+          <div class="col s12 main-info">
+            <app-avatar [user]="contact" [size]="185"></app-avatar>
+            <div class="main-fields">
+                <input placeholder="First Name" formControlName="firstName" type="text" class="validate">
+                <input placeholder="Last Name" formControlName="lastName" type="text" class="validate">
+                <input placeholder="Email" formControlName="email" type="email" class="validate">
+            </div>
           </div>
           <div class="phones col s12">
               <table>

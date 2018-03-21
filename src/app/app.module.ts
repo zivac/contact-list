@@ -8,6 +8,7 @@ import { MockHttpClient } from './services/mock-http.service';
 import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StorageService } from './services/storage.service';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 
 @NgModule({

@@ -38,8 +38,8 @@ export class ContactsService {
   //sort contact alphabetically
   sortContacts(contacts: Contact[]) {
     return contacts.sort((a, b) => {
-      if ((a.lastName.toLowerCase() + " " + a.firstName.toLowerCase()) < (b.lastName.toLowerCase() + " " + b.firstName.toLowerCase())) return -1;
-      if ((a.lastName.toLowerCase() + " " + a.firstName.toLowerCase()) > (b.lastName.toLowerCase() + " " + b.firstName.toLowerCase())) return 1;
+      if ((a.lastName.toLowerCase() + a.firstName.toLowerCase()) < (b.lastName.toLowerCase() + b.firstName.toLowerCase())) return -1;
+      if ((a.lastName.toLowerCase() + a.firstName.toLowerCase()) > (b.lastName.toLowerCase() + b.firstName.toLowerCase())) return 1;
       return 0;
     });
   }

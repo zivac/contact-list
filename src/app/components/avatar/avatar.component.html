@@ -1,0 +1,6 @@
+<img *ngIf="user.profilePhoto; else placeholder" [src]="user.profilePhoto" class="circle" [ngStyle]="{width: size+'px', height: size+'px'}">
+<ng-template #placeholder>
+  <div class="circle">
+    <i class="fas fa-user-circle" [ngStyle]="{'font-size': size+'px'}"></i>
+  </div>
+</ng-template>

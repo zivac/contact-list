@@ -30,7 +30,7 @@
     <h5 [id]="group">{{group}}</h5>
     <div class="collection">
       <a class="collection-item avatar" *ngFor="let contact of contacts[group]" [routerLink]="'/view/'+contact.id">
-        <img [src]="contact.profilePhoto" class="circle">
+        <app-avatar [user]="contact" [size]="60"></app-avatar>
         <span class="title"><span class="name">{{contact.firstName}}</span> <span class="name">{{contact.lastName}}</span></span>
         <p class="subtitle">{{contact.email}}</p>
         <span class="secondary-content hide-on-med-and-down">

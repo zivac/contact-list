@@ -93,7 +93,6 @@ export class ContactEditComponent implements OnInit {
     } else {
       //create contact
       this._contacts.createContact(value).subscribe(contact => {
-        console.log(contact);
         this._router.navigate(['/view/'+contact.id]);
       })
     }

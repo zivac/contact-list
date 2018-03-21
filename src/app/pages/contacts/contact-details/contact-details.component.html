@@ -5,7 +5,7 @@
       <a class="edit-link btn" [routerLink]="'/edit/'+contact.id">Edit</a>
     </div>
     <div class="card-content">
-      <img class="responsive-img" [src]="contact.profilePhoto" class="circle">
+      <app-avatar [user]="contact" [size]="200"></app-avatar>
       <h3><span class="name">{{contact.firstName}}</span> <span class="name">{{contact.lastName}}</span></h3>
       <p class="email">{{contact.email}}</p>
       <div class="links">
