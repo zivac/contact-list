@@ -2,27 +2,33 @@
   <nav>
     <div class="nav-wrapper">
       <div class="container">
-        <ul class="groups">
+        <ul class="groups hide-on-small-only">
           <li [ngClass]="{active: !showFavourites}">
-            <a (click)="toggleFavourites(false)">Contacts</a>
+            <a (click)="toggleFavourites(false)">
+              <span class="hide-on-med-only">Contacts</span>
+              <i class="fas fa-users hide-on-large-only"></i>
+            </a>
             <span class="triangle"></span>
           </li>
           <li [ngClass]="{active: showFavourites}">
-            <a (click)="toggleFavourites(true)">Favourites</a>
+            <a (click)="toggleFavourites(true)">
+              <span class="hide-on-med-only">Favourites</span>
+              <i class="fas fa-star hide-on-large-only"></i>
+            </a>
             <span class="triangle"></span>
           </li>
         </ul>
         <div class="search">
           <input placeholder="Search" type="text" class="validate" [(ngModel)]="searchText" (ngModelChange)="groupContacts()">
         </div>
-        <div class="actions">
+        <div class="actions hide-on-small-only">
           <a class="waves-effect waves-light btn" routerLink="/create">Add</a>
         </div>
       </div>
     </div>
   </nav>
 </div>
-<div class="alphabet-links">
+<div class="alphabet-links hide-on-med-and-down">
   <a *ngFor="let group of alphabetGroups" (click)="scrollTo(group)">{{group}}</a>
 </div>
 <div class="content container">

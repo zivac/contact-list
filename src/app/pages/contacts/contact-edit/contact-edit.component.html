@@ -20,15 +20,15 @@
                   <tr>
                     <th></th>
                     <th>Label</th>
-                    <th>Name</th>
+                    <th class="hide-on-small-only">Name</th>
                     <th>Number</th>
                   </tr>
                 </thead>
                 <tbody formArrayName="phones">
                   <tr *ngFor="let phone of contactForm.get('phones').controls; let i = index;" [formGroupName]="i">
                     <td style="text-align:center"><a class="btn-floating btn-small red" (click)="removePhone(i)"><i class="fas fa-minus"></i></a></td>
-                    <td><input placeholder="Label" formControlName="label" type="text" class="validate"></td>
-                    <td><input placeholder="Phone Name" formControlName="name" type="text" class="validate"></td>
+                    <td><app-select formControlName="label" [options]="_contacts.phoneLabels"></app-select></td>
+                    <td class="hide-on-small-only"><input placeholder="Phone Name" formControlName="name" type="text" class="validate"></td>
                     <td><input placeholder="Phone Number" formControlName="number" type="text" class="validate"></td>
                   </tr>
                   <tr>

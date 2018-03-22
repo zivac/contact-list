@@ -3,3 +3,8 @@
 body {
     background: #f2f2f2;
 }
+
+.collection .collection-item.avatar:not(.circle-clipper) > .circle, .collection .collection-item.avatar :not(.circle-clipper) > .circle {
+    width: 60px;
+    height: 60px;
+}

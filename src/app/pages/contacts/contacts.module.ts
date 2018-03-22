@@ -11,6 +11,7 @@ import { ContactsResolver } from './contacts.resolver';
 import { ContactResolver } from './contact.resolver';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarComponent } from '../../components/avatar/avatar.component';
+import { SelectComponent } from '../../components/select/select.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { AvatarComponent } from '../../components/avatar/avatar.component';
     ContactListComponent,
     ContactDetailsComponent,
     ContactEditComponent,
-    AvatarComponent
+    AvatarComponent,
+    SelectComponent
   ],
   providers: [
     ContactsService,

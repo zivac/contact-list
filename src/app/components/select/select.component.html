@@ -1,0 +1,7 @@
+<div class="select">
+    <input type="text" [(ngModel)]="innerValue" (input)="updateValue()">
+    <ul class="dropdown-content autocomplete-content" [ngStyle]="{width: size+'px'}">
+      <li *ngFor="let option of options"><span (mousedown)="setOption(option)">{{option}}</span></li>
+    </ul>
+</div>
+

@@ -29,7 +29,7 @@
             <tr>
               <th></th>
               <th>Label</th>
-              <th>Name</th>
+              <th class="hide-on-small-only">Name</th>
               <th>Number</th>
             </tr>
           </thead>
@@ -37,7 +37,7 @@
             <tr *ngFor="let phone of contact.phones">
               <td style="text-align:center"><i *ngIf="_contacts.phoneIcons[phone.label]" class="fas {{_contacts.phoneIcons[phone.label]}}"></i></td>
               <td>{{phone.label}}</td>
-              <td>{{phone.name}}</td>
+              <td class="hide-on-small-only">{{phone.name}}</td>
               <td><a href="tel:{{phone.number}}">{{phone.number}}</a></td>
             </tr>
           </tbody>

@@ -26,6 +26,8 @@ export class ContactsService {
     return new Observable(obs => {
       this._api.get('contacts').subscribe(res => {
         this.contacts = this.sortContacts((<any[]>res).map(item => new Contact(item)));
+        let labels = _.uniq(_.flatten(this.contacts.map(contact => contact.phones)).map(phone => phone.label));
+        this.phoneLabels = this.phoneLabels.concat(_.difference(labels, this.phoneLabels));
         obs.next(true);
         obs.complete();
       }, err => {
@@ -72,6 +74,8 @@ export class ContactsService {
         let contact = new Contact(_.extend(values, { id: res['id'] }));
         this.contacts.push(contact);
         this.contacts = this.sortContacts(this.contacts);
+        let labels = contact.phones.map(phone => phone.label);
+        this.phoneLabels = this.phoneLabels.concat(_.difference(labels, this.phoneLabels));
         obs.next(contact);
         obs.complete();
       }, err => {
@@ -86,6 +90,8 @@ export class ContactsService {
     return new Observable(obs => {
       this._api.post('contacts/' + contact.id, values).subscribe(res => {
         _.assign(contact, values);
+        let labels = contact.phones.map(phone => phone.label);
+        this.phoneLabels = this.phoneLabels.concat(_.difference(labels, this.phoneLabels));
         obs.next(contact);
         obs.complete();
       }, err => {
