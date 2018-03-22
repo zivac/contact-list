@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from '../contacts.service';
 import { Contact } from '../../../classes/contact';
@@ -16,6 +16,8 @@ export class ContactEditComponent implements OnInit {
 
   contact: Contact
   contactForm: FormGroup
+
+  @ViewChild('fileInput') fileInput: any;
 
   constructor(
     private _route: ActivatedRoute,
@@ -35,6 +37,7 @@ export class ContactEditComponent implements OnInit {
     this.contactForm = this._fb.group({
       firstName: this.contact.firstName,
       lastName: this.contact.lastName,
+      profilePhoto: this.contact.profilePhoto,
       email: this.contact.email,
       notes: this.contact.notes,
       phones: this._fb.array(this.contact.phones.map(phone => this._fb.group({
@@ -42,6 +45,38 @@ export class ContactEditComponent implements OnInit {
         name: phone.name,
         number: phone.number
       })))
+    })
+  }
+
+  //open file input for profile photo
+  setImage() {
+    this.fileInput.nativeElement.click();
+  }
+
+  //load new profile photo
+  imageLoaded(event: any) {
+    if(!event.srcElement.files.length) return;
+    let reader = new FileReader();
+    reader.onload = (event) => this.contactForm.patchValue({profilePhoto: event.target['result']});
+    reader.readAsDataURL(event.srcElement.files[0]);
+  }
+
+  //remove profile photo
+  removeImage() {
+    swal({
+      title: 'Are you sure?',
+      text: 'Are you sure you want to remove the contact profile photo?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      confirmButtonClass: "btn",
+      cancelButtonText: 'Cancel',
+      cancelButtonClass: "btn-flat",
+      buttonsStyling: false
+    }).then(result => {
+      if (result.value) {
+        this.contactForm.patchValue({profilePhoto: null});
+      }
     })
   }
 

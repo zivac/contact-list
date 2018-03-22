@@ -1,3 +1,7 @@
+$main-color-active: #2bbbad;
+$red: #f44336;
+$light-red: darken($red, 15%);
+
 .card {
     position: relative;
 }
@@ -10,11 +14,24 @@
         text-align: center;
     }
 
+    app-avatar {
+        cursor: pointer;
+    }
+
     app-avatar, .main-fields {
         display: inline-block;
 
         @media (max-width: 600px) {
             display: block;
+        }
+    }
+
+    .main-avatar {
+        position: relative;
+
+        .btn-floating {
+            position: absolute;
+            right: 0;
         }
     }
 
@@ -53,9 +70,17 @@
     height: 30px;
     width: 30px;
 
+    &:hover {
+        background-color: $main-color-active;
+    }
+
     i {
         line-height: 30px;
         font-size: 1em;
         vertical-align: top;
     }
+}
+
+.btn.red:hover, .btn-floating.red:hover {
+    background-color: $light-red !important;
 }

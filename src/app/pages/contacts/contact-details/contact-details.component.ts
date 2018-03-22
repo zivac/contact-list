@@ -25,4 +25,8 @@ export class ContactDetailsComponent implements OnInit {
     this._contacts.toggleFavourite(this.contact, this.contact.favourite).subscribe(() => {});
   }
 
+  saveNotes() {
+    this._contacts.updateContact(this.contact, {notes: this.contact.notes}).subscribe(() => {});
+  }
+
 }

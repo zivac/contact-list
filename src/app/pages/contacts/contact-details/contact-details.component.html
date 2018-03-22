@@ -9,10 +9,10 @@
       <h3><span class="name">{{contact.firstName}}</span> <span class="name">{{contact.lastName}}</span></h3>
       <p class="email">{{contact.email}}</p>
       <div class="links">
-        <a class="btn-floating" href="sms:{{contact.getPhone()}}"><i class="fas fa-comment"></i></a>
-        <a class="btn-floating" href="tel:{{contact.getPhone()}}"><i class="fas fa-phone"></i></a>
+        <a class="btn-floating" [ngClass]="{disabled: !contact.phones.length}" href="sms:{{contact.getPhone()}}"><i class="fas fa-comment"></i></a>
+        <a class="btn-floating" [ngClass]="{disabled: !contact.phones.length}" href="tel:{{contact.getPhone()}}"><i class="fas fa-phone"></i></a>
         <a class="btn-floating disabled"><i class="fas fa-video"></i></a>
-        <a class="btn-floating" href="mailto:{{contact.email}}"><i class="fas fa-envelope"></i></a>
+        <a class="btn-floating" [ngClass]="{disabled: !contact.email}" href="mailto:{{contact.email}}"><i class="fas fa-envelope"></i></a>
       </div>
       <div class="favourite">
         <div class="switch">
@@ -44,7 +44,7 @@
         </table>
       </div>
       <div class="notes">
-        <textarea placeholder="Notes" class="materialize-textarea"></textarea>
+        <textarea placeholder="Notes" [(ngModel)]="contact.notes" (change)="saveNotes()" class="materialize-textarea"></textarea>
       </div>
     </div>
   </div>

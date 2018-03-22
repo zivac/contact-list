@@ -7,7 +7,11 @@
             <button type="submit" class="save-button btn">Save</button>
           </div>
           <div class="col s12 main-info">
-            <app-avatar [user]="contact" [size]="185"></app-avatar>
+            <div class="main-avatar">
+                <a *ngIf="contactForm.value.profilePhoto" class="btn-floating btn-small red" (click)="removeImage()"><i class="fas fa-times"></i></a>
+                <app-avatar [user]="contactForm.value" [size]="185" (click)="setImage()"></app-avatar>
+                <input type="file" accept="image/*" [hidden]="true" (change)="imageLoaded($event)" #fileInput>
+            </div>
             <div class="main-fields">
                 <input placeholder="First Name" formControlName="firstName" type="text" class="validate">
                 <input placeholder="Last Name" formControlName="lastName" type="text" class="validate">

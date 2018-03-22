@@ -1,3 +1,7 @@
+$gray-text: #aaa;
+$menu-color: #2da1ad;
+$main-color: #26a69a;
+
 .navbar-fixed {
     nav {
         box-shadow: none;
@@ -26,7 +30,7 @@
                         height: 0;
                         border-style: solid;
                         border-width: 10px 10px 0 10px;
-                        border-color: #2da1ad transparent transparent transparent;
+                        border-color: $menu-color transparent transparent transparent;
                         position: absolute;
                         left: calc(50% - 10px);
                     }
@@ -36,7 +40,7 @@
         }
         
         .nav-wrapper {
-            background: #2da1ad;
+            background: $menu-color;
 
             .container {
 
@@ -74,6 +78,10 @@
     }
 }
 
+.content {
+    margin-bottom: 70px;
+}
+
 .alphabet-links {
     position: fixed;
     bottom: 10px;
@@ -82,13 +90,13 @@
     flex-direction: column;
 
     a {
-        color: #aaa;
+        color: $gray-text;
         font-size: 1.2em;
         text-transform: uppercase;
         cursor: pointer;
 
         &:hover {
-            color: #2da1ad;
+            color: $main-color;
         }
     }
 
@@ -114,7 +122,7 @@ h5 {
         .secondary-content {
 
             i {
-                color: #aaa;
+                color: $gray-text;
                 width: 40px;
                 height: 50px;
                 line-height: 2em;
@@ -123,7 +131,7 @@ h5 {
                 vertical-align: middle;
 
                 &:hover {
-                    color: #26a69a;
+                    color: $main-color;
                     font-size: 1.5em;
                 }
             }
@@ -131,7 +139,22 @@ h5 {
         }
 
         .subtitle {
-            color: #aaa;
+            color: $gray-text;
         }
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    height: 56px;
+    width: 100%;
+
+    .groups {
+        flex-grow: 1;
+    }
+
+    .actions {
+        padding: 0 !important;
     }
 }
