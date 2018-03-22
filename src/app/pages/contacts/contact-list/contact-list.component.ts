@@ -45,7 +45,7 @@ export class ContactListComponent implements OnInit {
       }), 'groupKey');
     //sort letters and then move # to last place
     this.alphabetGroups = _.keys(this.contacts).sort();
-    this.alphabetGroups.push(this.alphabetGroups.shift());
+    if(this.alphabetGroups.length && this.alphabetGroups[0] == '#') this.alphabetGroups.push(this.alphabetGroups.shift());
   }
 
   //activate or deactivate favourites filter

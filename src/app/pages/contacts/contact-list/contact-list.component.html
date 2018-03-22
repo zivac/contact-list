@@ -32,6 +32,9 @@
   <a *ngFor="let group of alphabetGroups" (click)="scrollTo(group)">{{group}}</a>
 </div>
 <div class="content container">
+  <div class="no-contacts-message" *ngIf="!alphabetGroups.length">
+    No contacts in list
+  </div>
   <div *ngFor="let group of alphabetGroups">
     <h5 [id]="group">{{group}}</h5>
     <div class="collection">
